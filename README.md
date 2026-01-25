@@ -7,6 +7,7 @@ This program is designed to generate pseudo-random passwords in one of two forma
 - **Random passwords**, created by selecting random characters from user‑specified character sets (letters, digits, optional punctuation) while excluding any characters the user designates as not allowed.
 
 The program supports both interactive password creation and automated generation of 1000 test cases.
+You can pull all files from the repo - and append to them through your testing, OR you can only download the program file and TXT word file to start fresh.
 
 ---
 

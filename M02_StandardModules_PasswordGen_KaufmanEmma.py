@@ -1,4 +1,4 @@
-import datetime
+import time
 import random
 import string
 import os
@@ -58,14 +58,14 @@ def save_password(password, folder_name):
     folder_path = os.path.join(base_dir, folder_name)
 
     # Create folder if missing
-    if not os.path.exists(folder_path):
+    if not os.path.exists(folder_path): 
         os.makedirs(folder_path)
 
     # Build full path to the file named Generated_Passwords
     file_path = os.path.join(folder_path, "Generated_Passwords.txt")
 
-    # Timestamp each password that is saved
-    timestamp = datetime.datetime.now()
+    # Timestamp each password that is saved (updated to ctime vs. datetime module)
+    timestamp = time.ctime()
 
     # Append to file
     with open(file_path, "a") as f:
@@ -89,8 +89,9 @@ if test_check == "Y":
             case = random.choice(["lower", "upper", "title"])
 
             # dynamic path to word list
-            base_dir = os.getcwd()
-            words_file = os.path.join(base_dir, "top_english_nouns_lower_100000.txt")
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            words_file = os.path.join(script_dir, "top_english_nouns_lower_100000.txt")
+
 
             # generate and save reh generated password
             password = memorable_password_gen(num_words, words_file, case)
@@ -118,8 +119,10 @@ else: #manual entry
         num_words = int(input("Please enter how many words you would like (1-10): "))
 
         # connects word file using dynamic pathing
-        base_dir = os.getcwd()
-        words_file = os.path.join(base_dir, "top_english_nouns_lower_100000.txt")
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        words_file = os.path.join(script_dir, "top_english_nouns_lower_100000.txt")
+
+
 
         # runs password generator
         password = memorable_password_gen(num_words, words_file, case)
